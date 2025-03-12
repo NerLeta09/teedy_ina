@@ -141,6 +141,9 @@
     <resources>
       <resource>
         <directory>src/main/resources</directory>
+        <excludes>
+                <exclude>**/*</exclude> <!-- 排除所有文件 -->
+            </excludes>
       </resource>
     </resources>
   </build>
