@@ -116,9 +116,48 @@
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${org.eclipse.jetty.jetty-maven-plugin.version}</version>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <encoding>UTF-8</encoding> 
+        </configuration>
+      </plugin>
+        
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>tree</goal>
+            </goals>
+            <phase>compile</phase>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-
+  <reporting>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>3.22.0</version>
+            <configuration>
+                <rulesets>
+                    <ruleset>/mnt/d/FinresandPheoton/2025Spring/Software/Lab/teedy_ina/customize.xml</ruleset> 
+                </rulesets>
+                <failOnViolation>false</failOnViolation> 
+                <includeXmlInSite>true</includeXmlInSite>
+                <linkXref>true</linkXref>
+            </configuration>
+        </plugin>
+    </plugins>
+</reporting>
   <modules>
     <module>docs-core</module>
     <module>docs-web-common</module>
@@ -127,6 +166,12 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>io.dropwizard.metrics</groupId>
+        <artifactId>metrics-core</artifactId>
+        <version>4.0.5</version>
+      </dependency>   
+
       <dependency>
         <groupId>com.sismics.docs</groupId>
         <artifactId>docs-core</artifactId>
