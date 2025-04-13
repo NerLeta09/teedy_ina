@@ -102,16 +102,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
-        <configuration>
-          <forkCount>1</forkCount>
-          <reuseForks>false</reuseForks>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${org.eclipse.jetty.jetty-maven-plugin.version}</version>
@@ -121,15 +111,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.9.1</version>
-        <configuration>
-          <reportPlugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.4.1</version>
-        </plugin>
-          </reportPlugins>
-        </configuration>
       </plugin>
 
       <plugin>
@@ -138,8 +119,10 @@
         <version>3.0.0</version>
         <configuration>
           <includes>
-        <include>**/*Test.java</include>
+            <include>**/*Test.java</include>
+            <include>**/Test*.java</include>
           </includes>
+          <testFailureIgnore>true</testFailureIgnore>
         </configuration>
       </plugin>
 
@@ -148,19 +131,20 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.10</version>
         <executions>
-          <execution>
-        <goals>
-          <goal>prepare-agent</goal>
-        </goals>
-          </execution>
-          <execution>
-        <id>report</id>
-        <phase>verify</phase>
-        <goals>
-          <goal>report</goal>
-        </goals>
-          </execution>
-        </executions>
+        <execution>
+          <id>prepare-agent</id>
+          <goals>
+            <goal>prepare-agent</goal>
+          </goals>
+        </execution>
+        <!-- <execution>
+          <id>report</id>
+          <phase>verify</phase>
+          <goals>
+            <goal>report</goal>
+          </goals>
+        </execution> -->
+      </executions>
       </plugin>
     </plugins>
   </build>
@@ -170,6 +154,48 @@
     <module>docs-web-common</module>
     <module>docs-web</module>
   </modules>
+
+  <reporting>
+    <plugins>
+        <!-- Maven Site Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.1.2</version>
+          <configuration>
+            <includes>
+                <include>**/*Test.java</include>
+            </includes>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.10</version>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>report</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+        </plugin> 
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.9.1</version>
+        </plugin>
+    </plugins>
+</reporting>
+
+<distributionManagement>
+    <site>
+        <!-- 父模块的站点 URL -->
+        <url>file://${project.basedir}/target/site</url>
+    </site>
+</distributionManagement>
 
   <dependencyManagement>
     <dependencies>

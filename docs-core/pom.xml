@@ -9,6 +9,25 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <reporting>
+    <plugins>
+        <!-- Maven Site Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.9.1</version>
+        </plugin>
+    </plugins>
+  </reporting>
+
+  <distributionManagement>
+    <site>
+        <!-- 子模块的站点 URL -->
+        <url>file://${project.basedir}/target/site</url>
+    </site>
+  </distributionManagement>
+  
+
   <modelVersion>4.0.0</modelVersion>
   <artifactId>docs-core</artifactId>
   <packaging>jar</packaging>
