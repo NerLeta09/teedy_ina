@@ -119,8 +119,8 @@
         <version>3.0.0</version>
         <configuration>
           <includes>
-            <include>**/*Test.java</include>
             <include>**/Test*.java</include>
+            <include>**/*Test.java</include>
           </includes>
           <testFailureIgnore>true</testFailureIgnore>
         </configuration>
@@ -137,13 +137,6 @@
             <goal>prepare-agent</goal>
           </goals>
         </execution>
-        <!-- <execution>
-          <id>report</id>
-          <phase>verify</phase>
-          <goals>
-            <goal>report</goal>
-          </goals>
-        </execution> -->
       </executions>
       </plugin>
     </plugins>

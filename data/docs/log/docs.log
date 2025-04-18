@@ -67,3 +67,155 @@
 13 Apr 2025 14:52:36,734 INFO com.sismics.docs.core.service.FileSizeService.shutDown(FileSizeService.java:35) File size service shutting down 
 13 Apr 2025 14:53:09,902 INFO com.sismics.docs.core.service.InboxService.shutDown(InboxService.java:57) Inbox service shutting down 
 13 Apr 2025 14:53:09,903 INFO com.sismics.docs.core.service.FileService.shutDown(FileService.java:44) File service shutting down 
+14 Apr 2025 11:17:31,129 INFO com.sismics.util.jpa.EMF.getEntityManagerProperties(EMF.java:67) Configuring EntityManager from hibernate.properties 
+14 Apr 2025 11:17:36,679 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:57) Opening database and executing incremental updates 
+14 Apr 2025 11:17:36,692 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:83) Unable to get database version: Table T_CONFIG not found 
+14 Apr 2025 11:17:36,693 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:98) Executing initial schema creation script 
+14 Apr 2025 11:17:36,717 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-000-0.sql 
+14 Apr 2025 11:17:36,990 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-000-1.sql 
+14 Apr 2025 11:17:37,031 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:106) Found database version 0, new version is 31, executing database incremental update scripts 
+14 Apr 2025 11:17:37,036 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-001-0.sql 
+14 Apr 2025 11:17:37,107 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-002-0.sql 
+14 Apr 2025 11:17:37,126 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-003-0.sql 
+14 Apr 2025 11:17:37,142 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-004-0.sql 
+14 Apr 2025 11:17:37,178 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-005-0.sql 
+14 Apr 2025 11:17:37,185 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-006-0.sql 
+14 Apr 2025 11:17:37,518 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-007-0.sql 
+14 Apr 2025 11:17:37,528 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-008-0.sql 
+14 Apr 2025 11:17:37,539 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-009-0.sql 
+14 Apr 2025 11:17:37,552 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-010-0.sql 
+14 Apr 2025 11:17:37,566 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement: CREATE CACHED TABLE T_USER_REQUEST ( 
+14 Apr 2025 11:17:37,567 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "CREATE CACHED TABLE T_USER_REQUEST ([*]"; expected "identifier"; SQL statement:
+CREATE CACHED TABLE T_USER_REQUEST ( [42001-199] 
+14 Apr 2025 11:17:37,595 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_ID_C VARCHAR(36) NOT NULL, 
+14 Apr 2025 11:17:37,596 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_ID_C[*] VARCHAR(36) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_ID_C VARCHAR(36) NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,599 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_USERNAME_C VARCHAR(50) NOT NULL, 
+14 Apr 2025 11:17:37,599 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_USERNAME_C[*] VARCHAR(50) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_USERNAME_C VARCHAR(50) NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,601 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_EMAIL_C VARCHAR(100) NOT NULL, 
+14 Apr 2025 11:17:37,602 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_EMAIL_C[*] VARCHAR(100) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_EMAIL_C VARCHAR(100) NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,604 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_PASSWORD_C VARCHAR(60) NOT NULL, 
+14 Apr 2025 11:17:37,605 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_PASSWORD_C[*] VARCHAR(60) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_PASSWORD_C VARCHAR(60) NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,608 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_STATUS_C VARCHAR(10) DEFAULT 'PENDING' NOT NULL, 
+14 Apr 2025 11:17:37,608 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_STATUS_C[*] VARCHAR(10) DEFAULT 'PENDING' NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_STATUS_C VARCHAR(10) DEFAULT 'PENDING' NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,611 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_CREATEDATE_D DATETIME DEFAULT NOW() NOT NULL, 
+14 Apr 2025 11:17:37,611 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_CREATEDATE_D[*] DATETIME DEFAULT NOW() NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_CREATEDATE_D DATETIME DEFAULT NOW() NOT NULL, [42001-199] 
+14 Apr 2025 11:17:37,613 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     PRIMARY KEY (REQ_ID_C) 
+14 Apr 2025 11:17:37,614 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    PRIMARY[*] KEY (REQ_ID_C)"; SQL statement:
+    PRIMARY KEY (REQ_ID_C) [42000-199] 
+14 Apr 2025 11:17:37,615 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement: ); 
+14 Apr 2025 11:17:37,616 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement ")[*];"; SQL statement:
+); [42000-199] 
+14 Apr 2025 11:17:37,620 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-011-0.sql 
+14 Apr 2025 11:17:37,634 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-012-0.sql 
+14 Apr 2025 11:17:37,646 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-013-0.sql 
+14 Apr 2025 11:17:37,654 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-014-0.sql 
+14 Apr 2025 11:17:37,664 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-015-0.sql 
+14 Apr 2025 11:17:37,686 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-016-0.sql 
+14 Apr 2025 11:17:37,692 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-017-0.sql 
+14 Apr 2025 11:17:37,704 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-018-0.sql 
+14 Apr 2025 11:17:37,788 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-019-0.sql 
+14 Apr 2025 11:17:37,798 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-020-0.sql 
+14 Apr 2025 11:17:37,807 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-021-0.sql 
+14 Apr 2025 11:17:37,824 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-022-0.sql 
+14 Apr 2025 11:17:37,849 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-023-0.sql 
+14 Apr 2025 11:17:37,866 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-024-0.sql 
+14 Apr 2025 11:17:37,885 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-025-0.sql 
+14 Apr 2025 11:17:37,893 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-026-0.sql 
+14 Apr 2025 11:17:37,922 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-027-0.sql 
+14 Apr 2025 11:17:37,933 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-028-0.sql 
+14 Apr 2025 11:17:37,940 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-029-0.sql 
+14 Apr 2025 11:17:37,953 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-030-0.sql 
+14 Apr 2025 11:17:37,961 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-031-0.sql 
+14 Apr 2025 11:17:37,965 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:108) Database upgrade complete 
+14 Apr 2025 11:17:37,968 INFO com.sismics.util.jpa.EMF.getEntityManagerProperties(EMF.java:67) Configuring EntityManager from hibernate.properties 
+14 Apr 2025 11:17:54,497 INFO com.sismics.util.ClasspathScanner.findClasses(ClasspathScanner.java:48) Found 1 classes for IndexingHandler 
+14 Apr 2025 11:17:54,991 INFO com.sismics.docs.core.util.indexing.LuceneIndexingHandler.initLucene(LuceneIndexingHandler.java:129) Using RAM Lucene storage 
+14 Apr 2025 11:17:55,939 INFO com.sismics.docs.core.service.FileService.startUp(FileService.java:39) File service starting up 
+14 Apr 2025 11:17:55,989 INFO com.sismics.docs.core.service.InboxService.startUp(InboxService.java:52) Inbox service starting up 
+14 Apr 2025 11:17:56,000 INFO com.sismics.docs.core.service.FileSizeService.startUp(FileSizeService.java:30) File size service starting up 
+14 Apr 2025 11:17:57,778 INFO com.sismics.docs.core.service.FileSizeService.lambda$runOneIteration$0(FileSizeService.java:50) No more file to process, stopping the service 
+14 Apr 2025 11:17:57,790 INFO com.sismics.docs.core.service.FileSizeService.shutDown(FileSizeService.java:35) File size service shutting down 
+14 Apr 2025 11:20:40,730 INFO com.sismics.docs.core.service.InboxService.shutDown(InboxService.java:57) Inbox service shutting down 
+14 Apr 2025 11:20:40,732 INFO com.sismics.docs.core.service.FileService.shutDown(FileService.java:44) File service shutting down 
+18 Apr 2025 19:43:28,680 INFO com.sismics.util.jpa.EMF.getEntityManagerProperties(EMF.java:67) Configuring EntityManager from hibernate.properties 
+18 Apr 2025 19:43:33,162 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:57) Opening database and executing incremental updates 
+18 Apr 2025 19:43:33,174 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:83) Unable to get database version: Table T_CONFIG not found 
+18 Apr 2025 19:43:33,175 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:98) Executing initial schema creation script 
+18 Apr 2025 19:43:33,200 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-000-0.sql 
+18 Apr 2025 19:43:33,433 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-000-1.sql 
+18 Apr 2025 19:43:33,472 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:106) Found database version 0, new version is 31, executing database incremental update scripts 
+18 Apr 2025 19:43:33,477 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-001-0.sql 
+18 Apr 2025 19:43:33,546 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-002-0.sql 
+18 Apr 2025 19:43:33,560 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-003-0.sql 
+18 Apr 2025 19:43:33,583 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-004-0.sql 
+18 Apr 2025 19:43:33,616 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-005-0.sql 
+18 Apr 2025 19:43:33,624 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-006-0.sql 
+18 Apr 2025 19:43:33,989 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-007-0.sql 
+18 Apr 2025 19:43:34,008 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-008-0.sql 
+18 Apr 2025 19:43:34,023 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-009-0.sql 
+18 Apr 2025 19:43:34,057 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-010-0.sql 
+18 Apr 2025 19:43:34,080 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement: CREATE CACHED TABLE T_USER_REQUEST ( 
+18 Apr 2025 19:43:34,081 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "CREATE CACHED TABLE T_USER_REQUEST ([*]"; expected "identifier"; SQL statement:
+CREATE CACHED TABLE T_USER_REQUEST ( [42001-199] 
+18 Apr 2025 19:43:34,088 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_ID_C VARCHAR(36) NOT NULL, 
+18 Apr 2025 19:43:34,089 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_ID_C[*] VARCHAR(36) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_ID_C VARCHAR(36) NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,094 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_USERNAME_C VARCHAR(50) NOT NULL, 
+18 Apr 2025 19:43:34,095 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_USERNAME_C[*] VARCHAR(50) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_USERNAME_C VARCHAR(50) NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,099 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_EMAIL_C VARCHAR(100) NOT NULL, 
+18 Apr 2025 19:43:34,100 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_EMAIL_C[*] VARCHAR(100) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_EMAIL_C VARCHAR(100) NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,101 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_PASSWORD_C VARCHAR(60) NOT NULL, 
+18 Apr 2025 19:43:34,102 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_PASSWORD_C[*] VARCHAR(60) NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_PASSWORD_C VARCHAR(60) NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,104 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_STATUS_C VARCHAR(10) DEFAULT 'PENDING' NOT NULL, 
+18 Apr 2025 19:43:34,105 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_STATUS_C[*] VARCHAR(10) DEFAULT 'PENDING' NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_STATUS_C VARCHAR(10) DEFAULT 'PENDING' NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,108 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     REQ_CREATEDATE_D DATETIME DEFAULT NOW() NOT NULL, 
+18 Apr 2025 19:43:34,109 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    REQ_CREATEDATE_D[*] DATETIME DEFAULT NOW() NOT NULL,"; expected "ROLLBACK, REVOKE, RUNSCRIPT, RELEASE, REPLACE"; SQL statement:
+    REQ_CREATEDATE_D DATETIME DEFAULT NOW() NOT NULL, [42001-199] 
+18 Apr 2025 19:43:34,111 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement:     PRIMARY KEY (REQ_ID_C) 
+18 Apr 2025 19:43:34,112 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement "    PRIMARY[*] KEY (REQ_ID_C)"; SQL statement:
+    PRIMARY KEY (REQ_ID_C) [42000-199] 
+18 Apr 2025 19:43:34,115 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:172) Error executing SQL statement: ); 
+18 Apr 2025 19:43:34,116 ERROR com.sismics.util.jpa.DbOpenHelper.executeScript(DbOpenHelper.java:173) Syntax error in SQL statement ")[*];"; SQL statement:
+); [42000-199] 
+18 Apr 2025 19:43:34,122 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-011-0.sql 
+18 Apr 2025 19:43:34,136 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-012-0.sql 
+18 Apr 2025 19:43:34,151 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-013-0.sql 
+18 Apr 2025 19:43:34,160 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-014-0.sql 
+18 Apr 2025 19:43:34,176 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-015-0.sql 
+18 Apr 2025 19:43:34,201 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-016-0.sql 
+18 Apr 2025 19:43:34,207 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-017-0.sql 
+18 Apr 2025 19:43:34,216 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-018-0.sql 
+18 Apr 2025 19:43:34,293 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-019-0.sql 
+18 Apr 2025 19:43:34,304 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-020-0.sql 
+18 Apr 2025 19:43:34,311 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-021-0.sql 
+18 Apr 2025 19:43:34,328 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-022-0.sql 
+18 Apr 2025 19:43:34,353 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-023-0.sql 
+18 Apr 2025 19:43:34,366 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-024-0.sql 
+18 Apr 2025 19:43:34,381 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-025-0.sql 
+18 Apr 2025 19:43:34,389 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-026-0.sql 
+18 Apr 2025 19:43:34,395 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-027-0.sql 
+18 Apr 2025 19:43:34,401 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-028-0.sql 
+18 Apr 2025 19:43:34,410 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-029-0.sql 
+18 Apr 2025 19:43:34,423 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-030-0.sql 
+18 Apr 2025 19:43:34,430 INFO com.sismics.util.jpa.DbOpenHelper.executeAllScript(DbOpenHelper.java:142) Executing script: dbupdate-031-0.sql 
+18 Apr 2025 19:43:34,434 INFO com.sismics.util.jpa.DbOpenHelper.open(DbOpenHelper.java:108) Database upgrade complete 
+18 Apr 2025 19:43:34,439 INFO com.sismics.util.jpa.EMF.getEntityManagerProperties(EMF.java:67) Configuring EntityManager from hibernate.properties 
+18 Apr 2025 19:43:53,473 INFO com.sismics.util.ClasspathScanner.findClasses(ClasspathScanner.java:48) Found 1 classes for IndexingHandler 
+18 Apr 2025 19:43:53,838 INFO com.sismics.docs.core.util.indexing.LuceneIndexingHandler.initLucene(LuceneIndexingHandler.java:129) Using RAM Lucene storage 
+18 Apr 2025 19:43:54,626 INFO com.sismics.docs.core.service.FileService.startUp(FileService.java:39) File service starting up 
+18 Apr 2025 19:43:54,672 INFO com.sismics.docs.core.service.InboxService.startUp(InboxService.java:52) Inbox service starting up 
+18 Apr 2025 19:43:54,680 INFO com.sismics.docs.core.service.FileSizeService.startUp(FileSizeService.java:30) File size service starting up 
+18 Apr 2025 19:43:56,203 INFO com.sismics.docs.core.service.FileSizeService.lambda$runOneIteration$0(FileSizeService.java:50) No more file to process, stopping the service 
+18 Apr 2025 19:43:56,212 INFO com.sismics.docs.core.service.FileSizeService.shutDown(FileSizeService.java:35) File size service shutting down 
+18 Apr 2025 19:53:29,731 INFO com.sismics.docs.core.service.InboxService.shutDown(InboxService.java:57) Inbox service shutting down 
+18 Apr 2025 19:53:29,734 INFO com.sismics.docs.core.service.FileService.shutDown(FileService.java:44) File service shutting down 

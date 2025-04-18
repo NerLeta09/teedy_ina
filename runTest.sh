@@ -19,3 +19,6 @@ mvn verify
 #with Jacoco
 mvn clean verify site
 
+#mvn -Dtest=YourNewTestClass test
+mvn -Dtest=YourNewTestClass test
+
