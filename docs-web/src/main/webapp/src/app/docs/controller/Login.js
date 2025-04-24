@@ -11,6 +11,26 @@ angular.module('docs').controller('Login', function(Restangular, $scope, $rootSc
     $rootScope.app = data;
   });
 
+  $scope.registerRequest = function() {
+    //点击按钮后 向后端发送HTTP请求 将用户名和密码作为Request信息存储到数据库中
+    //管理员上线后 能够同意或拒绝Request
+    const requestData = {
+      username: $scope.user.username,
+      password: $scope.user.password,
+    };
+
+    Restangular.all('/user/request').put(requestData)
+    .then(function(response){
+      const btns =[{result: 'ok', label: $translate.instant('ok'), cssClass: 'btn-primary'}];
+      $dialog.messageBox('Message', 'reg success', btns);
+    })
+    .catch(function(error){ 
+      const btns =[{result: 'ok', label: $translate.instant('ok'), cssClass: 'btn-primary'}];
+      console.log(error);
+      $dialog.messageBox('Error', error.toString(), btns);
+    });
+  };
+
   // Login as guest
   $scope.loginAsGuest = function() {
     $scope.user = {

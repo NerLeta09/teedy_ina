@@ -142,7 +142,7 @@ module.exports = function(grunt) {
     },
     apidoc: {
       generate: {
-        src: '../java/',
+        src: ['../java/'],
         dest: 'dist/apidoc/'
       }
     }

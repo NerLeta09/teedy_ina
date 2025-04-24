@@ -35,7 +35,6 @@ public class UserRequestDao {
             UserRequestDto dto = new UserRequestDto();
             dto.setId(userRequest.getId());
             dto.setUsername(userRequest.getUsername());
-            dto.setEmail(userRequest.getEmail());
             dto.setStatus(userRequest.getStatus());
             userRequestDtos.add(dto);
         }

@@ -24,3 +24,5 @@ docs/*
 #database
 ./docs.mv.db
 ./docs.trace.db
+
+./**/target

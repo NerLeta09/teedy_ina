@@ -22,9 +22,6 @@ public class UserRequest implements Loggable {
     @Column(name = "REQ_USERNAME_C", nullable = false)
     private String username;
 
-    @Column(name = "REQ_EMAIL_C", nullable = false)
-    private String email;
-
     @Column(name = "REQ_PASSWORD_C", nullable = false)
     private String password;
 
@@ -49,15 +46,6 @@ public class UserRequest implements Loggable {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPassword() {
         return password;
     }

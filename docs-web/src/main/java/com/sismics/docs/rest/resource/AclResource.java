@@ -135,7 +135,7 @@ public class AclResource extends BaseResource {
      * @apiError (client) AclError Cannot delete base ACL on a document or a tag
      * @apiPermission user
      * @apiVersion 1.5.0
-     * 
+     *
      * @param sourceId Source ID
      * @param permStr Permission
      * @param targetId Target ID
@@ -208,7 +208,7 @@ public class AclResource extends BaseResource {
      * @apiError (client) ValidationError Validation error
      * @apiPermission user
      * @apiVersion 1.5.0
-     * 
+     *
      * @param search Search query
      * @return Response
      */
