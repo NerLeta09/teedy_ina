@@ -1,4 +1,4 @@
 #!/bin/bash
-mvn clean -DskipTests install -e -X
+mvn clean -DskipTests install
 cd docs-web
 mvn jetty:run

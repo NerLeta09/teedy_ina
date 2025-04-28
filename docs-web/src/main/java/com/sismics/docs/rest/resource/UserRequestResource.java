@@ -46,8 +46,8 @@ public class UserRequestResource extends BaseResource {
      * @param password The password for the new user.
      * @return Response
      */
-    @PUT
-    public Response submitRequest(
+    @POST
+    public Response registerRequest(
             @FormParam("username") String username,
             @FormParam("password") String password) {
 

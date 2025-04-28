@@ -25,4 +25,5 @@ docs/*
 ./docs.mv.db
 ./docs.trace.db
 
+#output
 ./**/target
