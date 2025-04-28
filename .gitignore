@@ -22,8 +22,8 @@ docs/*
 
 
 #database
-./docs.mv.db
-./docs.trace.db
+docs.mv.db
+docs.trace.db
 
 #output
 ./**/target
