@@ -115,6 +115,18 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.20.0</version>
+        <configuration>
+          <rulesets>
+            <ruleset>/rulesets/java/quickstart.xml</ruleset>
+          </rulesets>
+          <failOnViolation>false</failOnViolation>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0</version>
         <configuration>
@@ -168,16 +180,15 @@
 
   <reporting>
     <plugins>
-        <!-- Maven Site Plugin -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.1.2</version>
-          <configuration>
-            <includes>
-                <include>**/*Test.java</include>
-            </includes>
-          </configuration>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>3.20.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>3.0.0</version>
         </plugin>
 
         <plugin>
