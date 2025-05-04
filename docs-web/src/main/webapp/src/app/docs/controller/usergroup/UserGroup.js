@@ -20,6 +20,11 @@ angular.module('docs').controller('UserGroup', function(Restangular, $scope, $st
     $scope.groups = data.groups;
   });
 
+  // Load user requests
+  Restangular.one('user/request').get().then(function(data) {
+    $scope.userRequests = data.userRequests;
+  });
+
   // Open a user
   $scope.openUser = function(user) {
     $state.go('user.profile', { username: user.username });
@@ -28,5 +33,12 @@ angular.module('docs').controller('UserGroup', function(Restangular, $scope, $st
   // Open a group
   $scope.openGroup = function(group) {
     $state.go('group.profile', { name: group.name });
+  };
+
+  
+
+  // Open a user request
+  $scope.openUserRequest = function(userRequest) {
+    $state.go('user.request.profile', { id: userRequest.id });
   };
 });

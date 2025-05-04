@@ -19,7 +19,7 @@ angular.module('docs').controller('Login', function(Restangular, $scope, $rootSc
       password: $scope.user.password,
     };
 
-    Restangular.all('/user/request').post(requestData)
+    Restangular.all('user/request').post(requestData)
     .then(function(response){
       const btns =[{result: 'ok', label: $translate.instant('ok'), cssClass: 'btn-primary'}];
       $dialog.messageBox('Message', 'reg success', btns);

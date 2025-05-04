@@ -16,9 +16,6 @@ public class UserRequest implements Loggable {
     @Column(name = "REQ_ID_C", nullable = false)
     private String id;
 
-    @Column(name = "USE_DELETEDATE_D")
-    private Date deleteDate;
-
     @Column(name = "REQ_USERNAME_C", nullable = false)
     private String username;
 
@@ -27,9 +24,6 @@ public class UserRequest implements Loggable {
 
     @Column(name = "REQ_STATUS_C", nullable = false)
     private String status = "PENDING";
-
-    @Column(name = "REQ_CREATEDATE_D", nullable = false)
-    private LocalDateTime createDate = LocalDateTime.now();
 
     public String getId() {
         return id;
@@ -61,23 +55,10 @@ public class UserRequest implements Loggable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
     
     @Override
     public Date getDeleteDate() {
-        return deleteDate;
-    }
-
-    public UserRequest setDeleteDate(Date deleteDate) {
-        this.deleteDate = deleteDate;
-        return this;
+        return null;
     }
 
     @Override

@@ -50,12 +50,7 @@ public class UserRequestResource extends BaseResource {
     public Response registerRequest(
             @FormParam("username") String username,
             @FormParam("password") String password) {
-
-        // Validate input data
-        username = ValidationUtil.validateLength(username, "username", 3, 50);
-        ValidationUtil.validateUsername(username, "username");
-        password = ValidationUtil.validateLength(password, "password", 8, 50);
-
+                
         // Create a new user request
         UserRequest userRequest = new UserRequest();
         userRequest.setUsername(username);

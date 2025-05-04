@@ -45,7 +45,33 @@
         <span class="fas fa-user"></span>
       </div>
     </div>
-  </div>
+
+    <div class="well well-3d" ng-if="isAdmin">
+      <p class="input-group">
+        <span class="input-group-addon"><span class="fas fa-search"></span></span>
+        <input type="search" class="form-control"
+               ng-attr-placeholder="{{ 'usergroup.search_user_request'}}"
+               ng-model="searchUserRequest">
+      </p>
+    
+      <table class="row table table-hover">
+        <tbody>
+        <tr class="pointer" ng-repeat="request in userRequests | filter: searchUserRequest"
+            ng-click="openUserRequest(request)"
+            ng-class="{ active: $stateParams.username == request.username }">
+          <td class="col-xs-4">
+            <span class="fas fa-user-plus"></span>
+            {{ request.username }}
+            <span class="badge badge-info">{{ request.status }}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    
+      <div class="well-3d-background">
+        <span class="fas fa-user-plus"></span>
+      </div>
+    </div>
 
   <div class="col-md-8">
     <div ui-view="sub"></div>

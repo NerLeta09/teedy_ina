@@ -11,10 +11,13 @@ import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.ArrayList;
-
+import java.util.UUID;
 
 public class UserRequestDao {
     public void create(UserRequest userRequest) { //写入Request到DB
+        if (userRequest.getId() == null) {
+            userRequest.setId(UUID.randomUUID().toString());
+        }
         EntityManager em = ThreadLocalContext.get().getEntityManager();
         em.persist(userRequest);
     }
@@ -51,7 +54,11 @@ public class UserRequestDao {
             userRequest.setStatus(status);
         }
     }
-    public void delete(String requestId){//从DB删除请求
-
+    public void delete(String requestId) {
+        EntityManager em = ThreadLocalContext.get().getEntityManager();
+        UserRequest userRequest = em.find(UserRequest.class, requestId);
+        if (userRequest != null) {
+            em.remove(userRequest);
+        }
     }
 }
