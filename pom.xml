@@ -105,6 +105,12 @@
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>${org.eclipse.jetty.jetty-maven-plugin.version}</version>
+        <configuration>
+        <webApp>
+          <resourceBase>${project.basedir}/src/main/webapp</resourceBase>
+        </webApp>
+        <scanIntervalSeconds>2</scanIntervalSeconds> <!-- 每2秒扫描文件变化 -->
+      </configuration>
       </plugin>
 
       <plugin>

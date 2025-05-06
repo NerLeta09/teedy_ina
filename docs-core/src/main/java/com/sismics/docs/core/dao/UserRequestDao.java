@@ -23,9 +23,15 @@ public class UserRequestDao {
     }
 
     public UserRequest getById(String requestId) {//单个查找
+
+        if (requestId == null) {
+            System.err.println("err");
+            return null;
+        }
         EntityManager em = ThreadLocalContext.get().getEntityManager();
         return em.find(UserRequest.class, requestId);
     }
+
     //返回List for Admin
     public ArrayList<UserRequestDto> findAllPending() {
         EntityManager em = ThreadLocalContext.get().getEntityManager();

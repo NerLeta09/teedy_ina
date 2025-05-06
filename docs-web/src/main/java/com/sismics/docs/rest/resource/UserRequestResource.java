@@ -14,9 +14,14 @@ import com.sismics.rest.util.ValidationUtil;
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObjectBuilder;
+import com.sismics.security.UserPrincipal;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+
+import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User Request REST resources.
@@ -27,6 +32,9 @@ import java.util.List;
  */
 @Path("/user/request")
 public class UserRequestResource extends BaseResource {
+
+    private UserResource userResource = new UserResource();
+    private static final Logger logger = LoggerFactory.getLogger(UserRequestResource.class);
     
     /**
      * Submit a new user registration request.
@@ -93,8 +101,6 @@ public class UserRequestResource extends BaseResource {
         if (!authenticate()) {
             throw new ForbiddenClientException();
         }
-        checkBaseFunction(BaseFunction.ADMIN);
-
         UserRequestDao userRequestDao = new UserRequestDao();
         UserRequest userRequest = userRequestDao.getById(id);
         if (userRequest == null) {
@@ -169,33 +175,37 @@ public class UserRequestResource extends BaseResource {
      * @return Response
      */
     @POST
-    @Path("{id}")
+    @Path("aprv")
     public Response approveRequest(
-            @PathParam("id") String id,
-            boolean approve) {
+        @FormParam("id") String id,
+        @FormParam("aprv") boolean approve
+        ) {
         if (!authenticate()) {
             throw new ForbiddenClientException();
         }
-        checkBaseFunction(BaseFunction.ADMIN);
-
-        // Get the user request
         UserRequestDao userRequestDao = new UserRequestDao();
         UserRequest userRequest = userRequestDao.getById(id);
         if (userRequest == null) {
             throw new ClientException("RequestNotFound", "User request not found");
         }
-
         // Handle approval or rejection
         if (approve) {
-            // Create a new user based on the request
-            UserDao userDao = new UserDao();
             User newUser = new User();
+            newUser.setRoleId(Constants.DEFAULT_USER_ROLE);
             newUser.setUsername(userRequest.getUsername());
             newUser.setPassword(userRequest.getPassword());
-            newUser.setRoleId(Constants.DEFAULT_USER_ROLE);
-
+            newUser.setEmail(userRequest.getUsername() + "@localhost");
+            newUser.setStorageQuota(Long.valueOf(10000));
+            newUser.setOnboarding(true);
+            UserDao userDao = new UserDao();
             try {
-                userDao.create(newUser, principal.getId());
+                String Userid = userDao.create(newUser, principal.getId());
+                logger.debug("Dear folina, How the chopticks look like?");
+                logger.debug(Userid);
+                // userResource.register(userRequest.getUsername(), 
+                //                         userRequest.getPassword(), 
+                //                         userRequest.getUsername() + "@localhost", 
+                //                         "1000");
             } catch (Exception e) {
                 throw new ServerException("UnknownError", "Unknown server error", e);
             }

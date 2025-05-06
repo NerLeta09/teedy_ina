@@ -144,6 +144,7 @@ angular.module('docs').controller('DocumentDefault', function ($scope, $rootScop
 
   //handleRequest
   if ($rootScope.userInfo.base_functions.indexOf('ADMIN') !== -1) {
+  // if($rootScope.userInfo.username === 'admin') {
     Restangular.one('user/request/list').get()
       .then(function (response) {
         // console.log(`requests: ${response.requests}`);
@@ -151,21 +152,27 @@ angular.module('docs').controller('DocumentDefault', function ($scope, $rootScop
         for(let i = 0; i <$scope.requests.length; i++) {
           let request = $scope.requests[i];
           var title = `user register request: ${request.username}`;
-          var msg = 'user.request.request_message';
+          var msg = 'user.request.request_message: A new user request';
           var btns = [
-            {result: 'approve', label: 'ok', cssClass: 'btn-primary'},
-            {result: 'reject', label:'cancel', cssClass: 'btn-default'}
+            {result: 'approve', label: 'Approve', cssClass: 'btn-primary'},
+            {result: 'reject', label:'Reject', cssClass: 'btn-default'}
           ];
+          
+          // Restangular.all('user/request/aprv').post(approveData).then(function(response) {
+          //   console.log(response);
+          // }, function(error) {
+          //   console.error('Error approving user request:', error);
+          // });
           $dialog.messageBox(title, msg, btns).then(function(result) {
-            console.log('rResult:', result);
-            let aprv;
+            let aprv = false;
             if (result === 'approve'){
               aprv = true;
-            } else {
-              aprv = false;
             }
-            console.log('rResult:', result);
-            Restangular.one('user/request', request.id).post(aprv).then(function(response) {
+            const approveData = {
+              id: request.id,
+              aprv: aprv,
+            };
+            Restangular.all('user/request/aprv').post(approveData).then(function(response) {
               console.log(response);
             }, function(error) {
               console.error('Error approving user request:', error);
