@@ -142,6 +142,43 @@ angular.module('docs').controller('DocumentDefault', function ($scope, $rootScop
     $scope.documentsWorkflow = data.documents;
   });
 
+  //handleRequest
+  if ($rootScope.userInfo.base_functions.indexOf('ADMIN') !== -1) {
+    Restangular.one('user/request/list').get()
+      .then(function (response) {
+        // console.log(`requests: ${response.requests}`);
+        $scope.requests = response.requests;
+        for(let i = 0; i <$scope.requests.length; i++) {
+          let request = $scope.requests[i];
+          var title = `user register request: ${request.username}`;
+          var msg = 'user.request.request_message';
+          var btns = [
+            {result: 'approve', label: 'ok', cssClass: 'btn-primary'},
+            {result: 'reject', label:'cancel', cssClass: 'btn-default'}
+          ];
+          $dialog.messageBox(title, msg, btns).then(function(result) {
+            console.log('rResult:', result);
+            let aprv;
+            if (result === 'approve'){
+              aprv = true;
+            } else {
+              aprv = false;
+            }
+            console.log('rResult:', result);
+            Restangular.one('user/request', request.id).post(aprv).then(function(response) {
+              console.log(response);
+            }, function(error) {
+              console.error('Error approving user request:', error);
+            });
+          }, function(error) {
+            console.log('rErr on send req', error);
+          });
+        }
+    },function(error) {
+      console.error('Error loading user requests:', error);
+    });
+  }
+  
   // Onboarding
   $translate('onboarding.step1.title').then(function () {
     User.userInfo().then(function(userData) {

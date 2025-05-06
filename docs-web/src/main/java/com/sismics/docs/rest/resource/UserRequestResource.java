@@ -70,6 +70,45 @@ public class UserRequestResource extends BaseResource {
         return Response.ok().entity(response.build()).build();
     }
 
+
+    /**
+     * Get a user registration request by ID.
+     *
+     * @api {get} /user/request/:id Get user registration request by ID
+     * @apiName GetUserRequest
+     * @apiGroup UserRequest
+     * @apiParam {String} id The unique ID of the user request.
+     * @apiSuccess {Object} request The user request object.
+     * @apiSuccess {String} request.id The unique ID of the request.
+     * @apiSuccess {String} request.username The username of the request.
+     * @apiError (client) RequestNotFound The user request could not be found.
+     * @apiPermission admin
+     * @apiVersion 1.5.0
+     *
+     * @param id The ID of the user request.
+     * @return Response
+     */
+    @GET
+    public Response getRequestById(@PathParam("id") String id) {
+        if (!authenticate()) {
+            throw new ForbiddenClientException();
+        }
+        checkBaseFunction(BaseFunction.ADMIN);
+
+        UserRequestDao userRequestDao = new UserRequestDao();
+        UserRequest userRequest = userRequestDao.getById(id);
+        if (userRequest == null) {
+            throw new ClientException("RequestNotFound", "User request not found");
+        }
+        
+        JsonObjectBuilder response = Json.createObjectBuilder()
+            .add("id", userRequest.getId())
+            .add("username", userRequest.getUsername())
+            .add("password", userRequest.getPassword());
+
+        return Response.ok().entity(response.build()).build();
+    }
+
     /**
      * List all pending user registration requests.
      *
@@ -79,7 +118,6 @@ public class UserRequestResource extends BaseResource {
      * @apiSuccess {Object[]} requests List of pending user requests.
      * @apiSuccess {String} requests.id The unique ID of the request.
      * @apiSuccess {String} requests.username The username of the user requesting registration.
-     * @apiSuccess {Date} requests.createDate The creation date of the request.
      * @apiError (client) ForbiddenError Access denied.
      * @apiPermission admin
      * @apiVersion 1.5.0
@@ -103,8 +141,7 @@ public class UserRequestResource extends BaseResource {
         for (UserRequestDto userRequestDto : userRequestDtoList) {
             requests.add(Json.createObjectBuilder()
                     .add("id", userRequestDto.getId())
-                    .add("username", userRequestDto.getUsername())
-                    .add("createDate", userRequestDto.getCreateDate().getTime()));
+                    .add("username", userRequestDto.getUsername()));
         }
 
         JsonObjectBuilder response = Json.createObjectBuilder()
@@ -135,7 +172,7 @@ public class UserRequestResource extends BaseResource {
     @Path("{id}")
     public Response approveRequest(
             @PathParam("id") String id,
-            @FormParam("approve") boolean approve) {
+            boolean approve) {
         if (!authenticate()) {
             throw new ForbiddenClientException();
         }

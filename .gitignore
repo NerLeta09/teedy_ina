@@ -28,3 +28,7 @@ docs.trace.db
 #output
 target
 ./**/target
+
+
+#log
+./data/docs
