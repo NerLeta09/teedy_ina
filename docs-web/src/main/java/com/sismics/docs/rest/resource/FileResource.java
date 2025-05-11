@@ -52,6 +52,13 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * File REST resources.
  * 
@@ -59,6 +66,9 @@ import java.util.zip.ZipOutputStream;
  */
 @Path("/file")
 public class FileResource extends BaseResource {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserRequestResource.class);
+    
     /**
      * Add a file (with or without a document).
      *
@@ -568,7 +578,8 @@ public class FileResource extends BaseResource {
     public Response data(
             @PathParam("id") final String fileId,
             @QueryParam("share") String shareId,
-            @QueryParam("size") String size) {
+            @QueryParam("size") String size,
+            @QueryParam("translate") @DefaultValue("false") boolean translate) {
         authenticate();
         
         if (size != null && !Lists.newArrayList("web", "thumb", "content").contains(size)) {
@@ -585,9 +596,36 @@ public class FileResource extends BaseResource {
         boolean decrypt;
         if (size != null) {
             if (size.equals("content")) {
-                return Response.ok(Strings.nullToEmpty(file.getContent()))
+                 
+                try {
+                    String content = file.getContent();
+                     if(translate) {
+                        ProcessBuilder pb = new ProcessBuilder("python", "src/scripts/trans.py", content);
+                        pb.redirectErrorStream(true);
+                        Process process = pb.start();
+
+                        StringBuilder output = new StringBuilder();
+                        try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), "UTF-8"))) {
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+                                output.append(line).append("\n");
+                            }
+                        }
+
+                        int exitCode = process.waitFor();
+                        if (exitCode != 0) {
+                            throw new RuntimeException("Python exited with code " + exitCode);
+                        }
+                        String t_content = output.toString().trim();
+                        
+                        content = t_content;
+                    }   
+                    return Response.ok(Strings.nullToEmpty(content))
                         .header(HttpHeaders.CONTENT_TYPE, "text/plain; charset=utf-8")
-                        .build();
+                        .build();     
+                } catch (Exception e) {
+                    throw new ServerException("FileDecryptionFailed", "Failed to decrypt the file", e);
+                }
             }
 
             storedFile = DirectoryUtil.getStorageDirectory().resolve(fileId + "_" + size);
