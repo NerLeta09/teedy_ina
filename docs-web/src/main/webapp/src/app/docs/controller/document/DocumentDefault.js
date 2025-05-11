@@ -147,42 +147,74 @@ angular.module('docs').controller('DocumentDefault', function ($scope, $rootScop
   // if($rootScope.userInfo.username === 'admin') {
     Restangular.one('user/request/list').get()
       .then(function (response) {
-        // console.log(`requests: ${response.requests}`);
         $scope.requests = response.requests;
-        for(let i = 0; i <$scope.requests.length; i++) {
-          let request = $scope.requests[i];
-          var title = `user register request: ${request.username}`;
-          var msg = 'user.request.request_message: A new user request';
-          var btns = [
-            {result: 'approve', label: 'Approve', cssClass: 'btn-primary'},
-            {result: 'reject', label:'Reject', cssClass: 'btn-default'}
-          ];
-          
-          // Restangular.all('user/request/aprv').post(approveData).then(function(response) {
-          //   console.log(response);
-          // }, function(error) {
-          //   console.error('Error approving user request:', error);
-          // });
-          $dialog.messageBox(title, msg, btns).then(function(result) {
-            let aprv = false;
-            if (result === 'approve'){
-              aprv = true;
-            }
-            const approveData = {
-              id: request.id,
-              aprv: aprv,
-            };
-            Restangular.all('user/request/aprv').post(approveData).then(function(response) {
-              console.log(response);
-            }, function(error) {
-              console.error('Error approving user request:', error);
-            });
+        
+        // Restangular.all('user/request/aprv').post(
+        // {
+        //   id: request.id,
+        //   aprv: true,
+        // }
+        // ).then(function(response) {
+        //   console.log(response);
+        // }, function(error) {
+        //   console.error('Error approving user request:', error);
+        // });
+        
+    //     $scope.requests.forEach(function(request) {
+    //     const modalInstance = $uibModal.open({
+    //       templateUrl: 'partial/docs/approveModal.html',
+    //       controller: 'ApproveModalCtrl',
+    //       resolve: {
+    //         request: () => request
+    //       }
+    //     });
+    //     modalInstance.result.then(function(result) {
+    //       const approveData = {
+    //         id: request.id,
+    //         aprv: result
+    //       };
+    //       Restangular.all('user/request/aprv').post(approveData).then(function(response) {
+    //         console.log(`Request for ${request.username} processed:`, response);
+    //       }, function(error) {
+    //         console.error('Error approving user request:', error);
+    //       });
+    //     }, function() {
+    //       console.log('Modal dismissed');
+    //     });
+    // },function(error) {
+    //   console.error('Error loading user requests:', error);
+    // });
+
+        function handleRequestsSequentially(requests, index = 0) {
+        if (index >= requests.length) return;
+        const request = requests[index];
+        const modalInstance = $uibModal.open({
+          templateUrl: 'partial/docs/approveModal.html',
+          controller: 'ApproveModalCtrl',
+          resolve: {
+            request: () => request
+          }
+        });
+
+        modalInstance.result.then(function(result) {
+          const approveData = {
+            id: request.id,
+            aprv: result
+          };
+          Restangular.all('user/request/aprv').post(approveData).then(function(response) {
+            console.log(`Request for ${request.username} processed:`, response);
+            handleRequestsSequentially(requests, index + 1);
           }, function(error) {
-            console.log('rErr on send req', error);
+            console.error('Error approving user request:', error);
+            handleRequestsSequentially(requests, index + 1);
           });
-        }
-    },function(error) {
-      console.error('Error loading user requests:', error);
+        }, function() {
+          console.log('Modal dismissed');
+          handleRequestsSequentially(requests, index + 1);
+        });
+      }
+
+      handleRequestsSequentially($scope.requests);
     });
   }
   
@@ -236,3 +268,15 @@ angular.module('docs').controller('DocumentDefault', function ($scope, $rootScop
     });
   });
 });
+
+angular.module('docs').controller('ApproveModalCtrl', function($scope, $uibModalInstance, request) {
+    $scope.request = request;
+
+    $scope.approve = function() {
+      $uibModalInstance.close(true);
+    };
+
+    $scope.reject = function() {
+      $uibModalInstance.close(false);
+    };
+  });
